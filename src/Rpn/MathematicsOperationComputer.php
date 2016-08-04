@@ -10,5 +10,6 @@ class MathematicsOperationComputer extends OperationComputer {
         $this->registerOperator('*', new Operators\Mathematics\Multiplication() );
         $this->registerOperator('x', new Operators\Mathematics\Multiplication() );
         $this->registerOperator('/', new Operators\Mathematics\Division() );
+        $this->registerOperator('SQR', new Operators\Mathematics\Square() );
     }
 }

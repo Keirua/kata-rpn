@@ -38,6 +38,13 @@ class RpnCalculatorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(12, $result);
     }
 
+    public function testSquareIsImplemented()
+    {
+        $result = $this->calculator->compute("6 SQR");
+
+        $this->assertEquals(36, $result);
+    }
+
     public function testInvalidOpertorThrowsException()
     {
         $this->expectException(\LogicException::class);
@@ -45,14 +52,21 @@ class RpnCalculatorTest extends \PHPUnit_Framework_TestCase
         $result = $this->calculator->compute("6 2 pouet");
     }
 
-    public function testComputationWith2OperatorsAreSupporeted()
+    public function testComputationWith2OperatorsAreSupported()
     {
         $result = $this->calculator->compute("7 5 2 - +");
 
         $this->assertEquals(10, $result);
     }
 
-    public function testComputationWith3OperatorsAreSupporeted()
+    public function testComputationWith2OperatorsIncludingUnariesAreSupported()
+    {
+        $result = $this->calculator->compute("7 5 + SQR");
+
+        $this->assertEquals(144, $result);
+    }
+
+    public function testComputationWith3OperatorsAreSupported()
     {
         $result = $this->calculator->compute("3 5 8 * 7 + *");
 
