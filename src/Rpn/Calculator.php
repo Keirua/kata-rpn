@@ -1,29 +1,34 @@
 <?php
+
 namespace Rpn;
 
-class Calculator {
+class Calculator
+{
     private $operationComputer;
 
-    public function __construct(){
-        $this->operationComputer = new MathematicsOperationComputer;
+    public function __construct()
+    {
+        $this->operationComputer = new MathematicsOperationComputer();
     }
 
-    public function compute ($operation){
+    public function compute($operation)
+    {
         $array = explode(' ', $operation);
         $stack = [];
 
         while (count($array) != 0) {
-            $this->processValue($array, $stack);            
+            $this->processValue($array, $stack);
         }
 
-        return array_pop ($stack);
+        return array_pop($stack);
     }
 
-    public function processValue(&$array, &$stack) {
+    public function processValue(&$array, &$stack)
+    {
         $currValue = array_shift($array);
-        $resultValue  = $currValue;
+        $resultValue = $currValue;
 
-        if (!is_numeric($currValue)){
+        if (!is_numeric($currValue)) {
             $resultValue = $this->operationComputer->compute($currValue, $stack);
         }
 

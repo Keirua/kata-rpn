@@ -6,7 +6,8 @@ class SquareTest extends \PHPUnit_Framework_TestCase
 {
     private $operation;
 
-    public function setUp(){
+    public function setUp()
+    {
         $this->operation = new Square();
     }
 

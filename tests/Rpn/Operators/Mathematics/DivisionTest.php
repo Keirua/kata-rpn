@@ -6,13 +6,14 @@ class DivisionTest extends \PHPUnit_Framework_TestCase
 {
     private $operation;
 
-    public function setUp(){
+    public function setUp()
+    {
         $this->operation = new Division();
     }
 
     public function testDivisionOperationIsImplemented()
     {
-        $values = [8,2];
+        $values = [8, 2];
         $result = $this->operation->compute($values);
 
         $this->assertEquals(4, $result);

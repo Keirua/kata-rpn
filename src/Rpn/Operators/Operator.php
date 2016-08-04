@@ -1,6 +1,8 @@
 <?php
+
 namespace Rpn\Operators;
 
-interface Operator {
+interface Operator
+{
     public function compute(&$stack);
 }
