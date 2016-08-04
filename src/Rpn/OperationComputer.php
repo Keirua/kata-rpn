@@ -16,11 +16,11 @@ class OperationComputer{
         $this->operators[$name] = $operator;
     }
 
-    public function compute ($name, $value1, $value2){
+    public function compute ($name, &$stack){
         if (!$this->isValid($name))
             throw new \LogicException(sprintf("Operator %s is not a valid operator", $name));
 
-        return $this->operators[$name] ->compute($value1, $value2);
+        return $this->operators[$name]->compute($stack);
     }
 
     public function isValid($name){

@@ -1,5 +1,4 @@
 <?php
-
 namespace Rpn;
 
 class Calculator {
@@ -22,14 +21,10 @@ class Calculator {
 
     public function processValue(&$array, &$stack) {
         $currValue = array_shift($array);
-
         $resultValue  = $currValue;
 
         if (!is_numeric($currValue)){
-            $value2 = array_pop($stack);
-            $value1 = array_pop($stack);
-
-            $resultValue = $this->operationComputer->compute($currValue, $value1, $value2);
+            $resultValue = $this->operationComputer->compute($currValue, $stack);
         }
 
         array_push($stack, $resultValue);

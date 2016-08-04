@@ -1,10 +1,10 @@
 <?php
 
 use Rpn\OperationComputer;
-use Rpn\Operators\Addition;
-use Rpn\Operators\Substraction;
-use Rpn\Operators\Multiplication;
-use Rpn\Operators\Division;
+use Rpn\Operators\Mathematics\Addition;
+use Rpn\Operators\Mathematics\Substraction;
+use Rpn\Operators\Mathematics\Multiplication;
+use Rpn\Operators\Mathematics\Division;
 
 class OperationComputerTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,12 +20,14 @@ class OperationComputerTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testRegisteredOperationIsComputed(){
-        $result  = $this->operationComputer->compute('+', 2, 3);
+        $values = [2, 3];
+        $result  = $this->operationComputer->compute('+', $values);
         $this->assertEquals(5, $result);
     }
 
     public function testInvalidOperationRaisesException(){
+        $values = [2, 3];
         $this->expectException(\LogicException::class);
-        $result  = $this->operationComputer->compute('plop', 2, 3);
+        $result  = $this->operationComputer->compute('plop', $values);
     }
 }
