@@ -3,6 +3,17 @@
 namespace Rpn;
 
 class Calculator {
+    private $operationComputer;
+
+    public function __construct(){
+        $this->operationComputer = new OperationComputer;
+        $this->operationComputer->registerOperator('+', new Operators\Addition() );
+        $this->operationComputer->registerOperator('-', new Operators\Substraction() );
+        $this->operationComputer->registerOperator('*', new Operators\Multiplication() );
+        $this->operationComputer->registerOperator('x', new Operators\Multiplication() );
+        $this->operationComputer->registerOperator('/', new Operators\Division() );
+    }
+
     public function compute ($operation){
         $array = explode(' ', $operation);
         $stack = [];
@@ -16,35 +27,12 @@ class Calculator {
                 $value2 = array_pop($stack);
                 $value1 = array_pop($stack);
 
-                $resultValue = $this->computeOperationResult($value1, $value2, $currValue);
+                $resultValue = $this->operationComputer->compute($currValue, $value1, $value2);
             }
 
             array_push($stack, $resultValue);
         }
 
         return array_pop ($stack);
-    }
-
-    private function computeOperationResult($value1, $value2, $operator){
-        switch($operator)
-        {
-            case '+':
-                $resultValue = $value1 + $value2;
-                break;
-            case '-':
-                $resultValue = $value1 - $value2;
-                break;
-            case 'x':
-            case '*':
-                $resultValue = $value1 * $value2;
-                break;
-            case '/':
-                $resultValue = $value1 / $value2;
-                break;
-            default:
-                throw new \LogicException(sprintf("%s is not a supported operator", $operator));
-                break;
-        }
-        return $resultValue;
     }
 }
