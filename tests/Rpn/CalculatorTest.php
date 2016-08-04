@@ -2,11 +2,11 @@
 
 use Rpn\Calculator;
 
-class RpnCalculatorTest extends PHPUnit_Framework_TestCase
+class RpnCalculatorTest extends \PHPUnit_Framework_TestCase
 {
     private $calculator;
 
-    public function __construct(){
+    public function setUp(){
         $this->calculator = new Calculator();
     }
 

@@ -7,8 +7,7 @@ class Calculator {
         $array = explode(' ', $operation);
         $stack = [];
 
-        while (count($array) != 0)
-        {
+        while (count($array) != 0) {
             $currValue = array_shift($array);
 
             $resultValue  = $currValue;
