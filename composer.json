@@ -12,7 +12,9 @@
     ],
     "autoload" : {
         "psr-4" : {
-            "Rpn\\" : "src/Rpn"
+            "Rpn\\" : "src/Rpn",
+            "ShuntingYard\\" : "src/ShuntingYard",
+            "Component\\" : "src/Component"
         }
     }
 }
